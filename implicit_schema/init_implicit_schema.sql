@@ -1,0 +1,1 @@
+CREATE EXTENSION IF NOT EXISTS implicit_schema;

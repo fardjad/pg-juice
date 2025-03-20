@@ -1,0 +1,10 @@
+services:
+  pg:
+    build: .
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    command: postgres -c wal_compression=zstd
+    ports:
+      - "5432:5432"
