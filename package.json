@@ -1,5 +1,5 @@
 {
-	"name": "pg-juicefs-integration-tests",
+	"name": "pg-juice-integration-tests",
 	"private": true,
 	"type": "module",
 	"scripts": {

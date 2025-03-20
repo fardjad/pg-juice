@@ -1,4 +1,4 @@
-# PG JuiceFS
+# PG Juice
 
 [JuiceFS](https://juicefs.com) is a distributed file system that can use
 PostgreSQL as its metadata storage engine. While JuiceFS can technically create
@@ -7,13 +7,13 @@ manually (or outside of JuiceFS) create a new schema for each filesystem. This
 can be especially cumbersome when
 [managing JuiceFS mount points through Docker](https://juicefs.com/docs/community/juicefs_on_docker).
 
-PG JuiceFS is an extended version of PostgreSQL that simplifies file system
+PG Juice is an extended version of PostgreSQL that simplifies file system
 creation by automatically creating schemas for each filesystem.
 
-In other words, **PG JuiceFS** allows the following:
+In other words, **PG Juice** allows the following:
 
 ```bash
-PG_URL="postgres://username:password@pg-juicefs:5432/juicefs"
+PG_URL="postgres://username:password@pg-juice:5432/juicefs"
 
 # Create the first filesystem
 juicefs format \
@@ -32,8 +32,8 @@ docker-compose.yml:
 
 ```yaml
 services:
-    pg-juicefs:
-        image: fardjad/pg-juicefs:17 # 17 is the version of PostgreSQL
+    pg-juice:
+        image: fardjad/pg-juice:17 # 17 is the version of PostgreSQL
         restart: unless-stopped
         healthcheck:
             test: "pg_isready -U ${POSTGRES_USER:-juicefs} --dbname=juicefs"
@@ -48,7 +48,7 @@ services:
         ports:
             - "5432:5432"
         volumes:
-            - ./juicefs-pg-data:/var/lib/postgresql/data
+            - ./pg-data:/var/lib/postgresql/data
 ```
 
 ## Running the Tests
