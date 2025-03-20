@@ -19,3 +19,14 @@ jobs:
       - run: npm test 
         env:
           TESTCONTAINERS_RYUK_DISABLED: true
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push the image
+        run: |
+          # TODO: use the full version of Postgres and publish that and the latest version to Docker Hub
+          TAG="fardjad/pg-juice:17"
+          docker build -t "${TAG}" .
+          docker push "${TAG}"
